@@ -30,15 +30,15 @@ else
   endif
 endif
 
-LINK = ${CXX}
+LINK = ${CXX} ../../kernel_stats/kernel_stats.o
 
 KOKKOS_OPTIONS=aggressive_vectorization
 
 DEPFLAGS = -M
 
 vpath %.cpp $(EXAMINIMD_PATH)/src
-SRC =  $(wildcard $(EXAMINIMD_PATH)/src/*.cpp) 
-HEADERS = $(wildcard $(EXAMINIMD_PATH)/src/*.h) 
+SRC =  $(wildcard $(EXAMINIMD_PATH)/src/*.cpp)
+HEADERS = $(wildcard $(EXAMINIMD_PATH)/src/*.h)
 CXXFLAGS += -I$(EXAMINIMD_PATH)/src
 
 vpath %.cpp $(EXAMINIMD_PATH)/src/force_types
@@ -72,11 +72,10 @@ build: $(EXE)
 $(EXE): $(OBJ) $(KOKKOS_LINK_DEPENDS)
 	$(LINK) $(KOKKOS_LDFLAGS) $(LINKFLAGS) $(EXTRA_PATH) $(OBJ) $(KOKKOS_LIBS) $(LIB) -o $(EXE)
 
-clean: kokkos-clean 
+clean: kokkos-clean
 	rm -f *.o $(EXE)
 
 # Compilation rules
 
 %.o:%.cpp $(KOKKOS_CPP_DEPENDS) ${HEADERS}
 	$(CXX) $(KOKKOS_CPPFLAGS) $(KOKKOS_CXXFLAGS) $(CXXFLAGS) $(EXTRA_INC) -c $<
-

@@ -45,7 +45,13 @@
 #include "mpi.h"
 #endif
 
+extern "C" {
+  void init_timestep_();
+  void exit_timestep_();
+}
+
 int main(int argc, char* argv[]) {
+   init_timestep_();
 
    #ifdef EXAMINIMD_ENABLE_MPI
    MPI_Init(&argc,&argv);
@@ -55,7 +61,7 @@ int main(int argc, char* argv[]) {
 
    ExaMiniMD examinimd;
    examinimd.init(argc,argv);
-  
+
    examinimd.run(examinimd.input->nsteps);
 
    //   examinimd.check_correctness();
@@ -66,6 +72,7 @@ int main(int argc, char* argv[]) {
 
    Kokkos::finalize();
 
+   exit_timestep_();
    #ifdef EXAMINIMD_ENABLE_MPI
    MPI_Finalize();
    #endif

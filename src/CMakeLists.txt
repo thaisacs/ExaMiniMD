@@ -34,7 +34,7 @@ set(SOURCES
   property_temperature.cpp
   system.cpp)
 
-add_executable(ExaMiniMD main.cpp ${SOURCES} ${HEADERS})
+add_executable(ExaMiniMD main.cpp ${SOURCES} ${HEADERS} ../../kernel_stats/kernel_stats.o)
 
 set(SUBDIRECTORIES
   binning_types

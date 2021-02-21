@@ -43,6 +43,11 @@
 
 #define MAXPATHLEN 1024
 
+extern "C" {
+  void begin_timestep_();
+  void end_timestep_();
+}
+
 ExaMiniMD::ExaMiniMD() {
   // First we need to create the System data structures
   // They are used by input
@@ -189,6 +194,7 @@ void ExaMiniMD::run(int nsteps) {
 
   // Timestep Loop
   for(int step = 1; step <= nsteps; step++ ) {
+    begin_timestep_();
 
     // Do first part of the verlet time step integration
     other_timer.reset();
@@ -272,6 +278,7 @@ void ExaMiniMD::run(int nsteps) {
       check_correctness(step);
 
     other_time += other_timer.seconds();
+    end_timestep_();
   }
 
   double time = timer.seconds();
