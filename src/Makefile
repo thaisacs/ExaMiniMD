@@ -2,7 +2,8 @@
 KOKKOS_PATH = ${HOME}/kokkos
 
 #Backend and architecture configuration
-KOKKOS_DEVICES=OpenMP
+#KOKKOS_DEVICES=OpenMP
+KOKKOS_DEVICES=""
 KOKKOS_ARCH = ""
 
 #MPI On or off (1/0)
