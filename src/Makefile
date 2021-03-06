@@ -1,5 +1,5 @@
 #Kokkos root path
-KOKKOS_PATH = ${HOME}/kokkos
+#KOKKOS_PATH = ${HOME}/efs/kokkos
 
 #Backend and architecture configuration
 #KOKKOS_DEVICES=OpenMP
