@@ -31,7 +31,7 @@ else
   endif
 endif
 
-LINK = ${CXX} ../../../utils/kernel_stats.o
+LINK = ${CXX} ../../../utils/obj/*.o
 
 KOKKOS_OPTIONS=aggressive_vectorization
 
