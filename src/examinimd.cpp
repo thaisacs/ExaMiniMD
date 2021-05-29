@@ -46,6 +46,7 @@
 extern "C" {
   void begin_timestep_();
   void end_timestep_();
+  void after_timestep_();
 }
 
 ExaMiniMD::ExaMiniMD() {
@@ -280,6 +281,7 @@ void ExaMiniMD::run(int nsteps) {
     other_time += other_timer.seconds();
     end_timestep_();
   }
+  after_timestep_();
 
   double time = timer.seconds();
   T_FLOAT T = temp.compute(system);
